@@ -1,7 +1,7 @@
-BinarySearch & Sort
+/* BinarySearch & Sort */
+
 
 class BinarySearch {
-
     func sortedArray(sort: [Int]) -> [Int] {
         return sort.sort({$0 < $1})
     }
