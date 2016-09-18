@@ -1,0 +1,25 @@
+func insertionSort<T: Comparable>(a: [T]) -> [T] {
+    guard a.count > 1 else { return a } // If have 1 or less items, we're already finished
+    
+    var b = a // Sort the array in place by making a copy of the array A
+    for i in 1..<b.count {
+        // Move the index marker to traverse the array
+        // `i` marks where the sorted pile ends and the unsorted pile begins
+        
+        var y = i // `y` is the index of the item we're comparing in the sorted pile with the next item in the unsorted pile
+        let temp = b[y] // Remember the next item in the unsorted pile that will eventually be put into the correct position
+        
+        while y > 0 && temp < b[y-1] { // Objects conforming to Comparable can use `<`
+            // While we haven't hit the beginning of the array,
+            // and while our next unsorted item is less than the sorted item we're comparing it to,
+            // we don't yet have a sorted array. Keep shifting the items to the right until we find the right spot to insert
+            // `temp`, our next unsorted item.
+            b[y] = b[y - 1]
+            
+            // Move the marker to the next item in the sorted array, and, on the next loop, repeat if necessary
+            y -= 1
+        }
+        b[y] = temp // We found the right spot to insert the next unsorted item. Insert it!
+    }
+    return b // Return a sorted copy of the original array
+}
