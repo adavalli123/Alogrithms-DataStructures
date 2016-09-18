@@ -1,0 +1,24 @@
+func binarySearch<T: Comparable>(searchElement: T, arrayElements: [T]) -> Int?
+{
+    var lowBounds = 0
+    var UpBounds = arrayElements.count
+    
+    while lowBounds<UpBounds {
+        let midIndex = lowBounds + (UpBounds - lowBounds)/2
+        
+        if arrayElements[midIndex] == searchElement
+        {
+            return midIndex as! T as? Int
+        }
+        
+        else if arrayElements[midIndex] < searchElement  {
+            lowBounds = midIndex+1
+        }
+        else {
+            UpBounds = midIndex
+        }
+    }
+    return nil
+}
+var arrayElements = [3,4,5,7,9,11,13,14,16,18,21,22,26,27]
+binarySearch(searchElement: 27, arrayElements: arrayElements)
